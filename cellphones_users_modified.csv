@@ -1,12 +1,12 @@
 user_id,age,gender,occupation
 0,38,Female,data analyst
-1,40,Female,team worker in it
+1,40,Female,information technology
 6,55,Female,it
 8,25,Female,manager
 10,23,Male,worker
 12,28,Female,accountant
 16,31,Female,sales
-24,57,Female,it
+24,57,Female,information technology
 25,27,Female,team leader
 26,28,Female,finance
 27,29,Female,finance
@@ -54,7 +54,7 @@ user_id,age,gender,occupation
 140,29,Male,information technology
 142,32,Male,manager
 143,32,Male,manager
-144,38,-Select Gender-,administrative officer
+144,38,null,null
 145,32,Male,manager
 148,31,Female,data analyst
 152,30,Female,security
@@ -63,12 +63,12 @@ user_id,age,gender,occupation
 160,31,Male,construction
 162,50,Male,manager
 164,21,Male,accountant
-169,38,-Select Gender-,manager
+169,38,null,manager
 178,25,Male,software developer
 183,35,Male,team leader
 194,46,Male,administrative officer
-200,48,Male,it
-203,38,Female,it
+200,48,Male,information technology
+203,38,Female,information technology
 204,30,Female,administrative officer
 208,29,Male,information technology
 211,37,Female,sales manager
