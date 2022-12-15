@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+    <body>
+        <table></table>
+            {% for item in users %}
+            <tr> 
+                <td>{{ item.user_id }}</td>
+                <td>{{ item.age }}</td>
+                <td>{{ item.gender }}</td>
+                <td>{{ item.occupation }}</td>
+            </tr>
+            <br>
+            {% endfor %}
+        </table>
+    </body>
+</html>
