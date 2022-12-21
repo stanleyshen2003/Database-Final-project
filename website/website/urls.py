@@ -20,5 +20,7 @@ from cellphone import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
-    path('users/', views.get_users)
+    path('users/', views.get_users),
+    path('rate/', views.get_rate),
+    path('data/', views.get_data),
 ]
