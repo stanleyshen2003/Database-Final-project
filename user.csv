@@ -1,100 +1,100 @@
-user_id,age,gender,occupation
-0,38,Female,data analyst
-1,40,Female,information technology
-6,55,Female,information technology
-8,25,Female,manager
-10,23,Male,worker
-12,28,Female,accountant
-16,31,Female,sales
-24,57,Female,information technology
-25,27,Female,team leader
-26,28,Female,finance
-27,29,Female,finance
-28,33,Female,sales
-29,61,Female,ops manager
-30,34,Male,ict officer
-32,39,Male,qa software manager
-33,30,Female,healthcare
-35,41,Male,self employed
-36,42,Male,banking
-37,34,Female,nurse
-38,42,Male,executive
-52,25,Male,software developer
-53,38,null,null
-56,50,Female,manager
-60,48,Male,information technology
-74,25,Male,manager
-79,25,Male,manager
-80,25,Male,worker
-84,33,Male,warehousing
-85,33,Female,sales
-91,34,Male,web design
-95,28,Male,information technology
-98,25,Female,technical engineer
-99,30,Male,information
-100,43,Female,information technology
-104,32,Male,administrator
-105,25,Female,system administrator
-106,32,Male,manager
-110,36,Male,marketing
-111,37,Female,education
-112,30,Female,security
-113,56,Female,retail
-114,46,Male,technician
-115,37,Female,homemaker
-116,32,Male,teacher
-119,49,Female,president transportation company
-120,50,Female,manager
-123,32,Male,manager
-124,50,Female,manager
-126,27,Female,information technology
-128,50,Female,manager
-129,61,Female,information technology
-137,29,Female,information technology
-140,29,Male,information technology
-142,32,Male,manager
-143,32,Male,manager
-144,38,null,null
-145,32,Male,manager
-148,31,Female,data analyst
-152,30,Female,security
-154,32,Male,information technology
-156,39,Female,master degree
-160,31,Male,construction
-162,50,Male,manager
-164,21,Male,accountant
-169,38,null,manager
-178,25,Male,software developer
-183,35,Male,team leader
-194,46,Male,administrative officer
-200,48,Male,information technology
-203,38,Female,information technology
-204,30,Female,administrative officer
-208,29,Male,information technology
-211,37,Female,sales manager
-215,42,Female,purchase manager
-226,27,Female,information technology
-227,32,Male,information technology
-230,29,Female,information technology
-231,58,Male,administrative officer
-232,46,Male,writer
-233,31,Male,construction
-234,32,Female,registered
-235,56,Male,business
-236,33,Male,transportation
-237,33,Male,education
-238,30,Male,security
-240,37,Female,sales manager
-242,35,Male,healthcare
-243,42,Female,manager
-244,41,Male,manager
-245,35,Male,healthcare
-246,45,Female,manager
-251,39,Male,computer technician
-252,58,Male,administrative officer
-253,40,Female,information technology
-254,25,Female,software developer
-255,25,Male,software developer
-256,49,Male,information technology
-257,25,Female,manager
-258,25,Male,executive manager
+user_id,age,gender,occupation,,password
+0,38,Female,data analyst,,123456
+1,40,Female,information technology,,123456
+6,55,Female,information technology,,123456
+8,25,Female,manager,,123456
+10,23,Male,worker,,123456
+12,28,Female,accountant,,123456
+16,31,Female,sales,,123456
+24,57,Female,information technology,,123456
+25,27,Female,team leader,,123456
+26,28,Female,finance,,123456
+27,29,Female,finance,,123456
+28,33,Female,sales,,123456
+29,61,Female,ops manager,,123456
+30,34,Male,ict officer,,123456
+32,39,Male,qa software manager,,123456
+33,30,Female,healthcare,,123456
+35,41,Male,self employed,,123456
+36,42,Male,banking,,123456
+37,34,Female,nurse,,123456
+38,42,Male,executive,,123456
+52,25,Male,software developer,,123456
+53,38,null,null,,123456
+56,50,Female,manager,,123456
+60,48,Male,information technology,,123456
+74,25,Male,manager,,123456
+79,25,Male,manager,,123456
+80,25,Male,worker,,123456
+84,33,Male,warehousing,,123456
+85,33,Female,sales,,123456
+91,34,Male,web design,,123456
+95,28,Male,information technology,,123456
+98,25,Female,technical engineer,,123456
+99,30,Male,information,,123456
+100,43,Female,information technology,,123456
+104,32,Male,administrator,,123456
+105,25,Female,system administrator,,123456
+106,32,Male,manager,,123456
+110,36,Male,marketing,,123456
+111,37,Female,education,,123456
+112,30,Female,security,,123456
+113,56,Female,retail,,123456
+114,46,Male,technician,,123456
+115,37,Female,homemaker,,123456
+116,32,Male,teacher,,123456
+119,49,Female,president transportation company,,123456
+120,50,Female,manager,,123456
+123,32,Male,manager,,123456
+124,50,Female,manager,,123456
+126,27,Female,information technology,,123456
+128,50,Female,manager,,123456
+129,61,Female,information technology,,123456
+137,29,Female,information technology,,123456
+140,29,Male,information technology,,123456
+142,32,Male,manager,,123456
+143,32,Male,manager,,123456
+144,38,null,null,,123456
+145,32,Male,manager,,123456
+148,31,Female,data analyst,,123456
+152,30,Female,security,,123456
+154,32,Male,information technology,,123456
+156,39,Female,master degree,,123456
+160,31,Male,construction,,123456
+162,50,Male,manager,,123456
+164,21,Male,accountant,,123456
+169,38,null,manager,,123456
+178,25,Male,software developer,,123456
+183,35,Male,team leader,,123456
+194,46,Male,administrative officer,,123456
+200,48,Male,information technology,,123456
+203,38,Female,information technology,,123456
+204,30,Female,administrative officer,,123456
+208,29,Male,information technology,,123456
+211,37,Female,sales manager,,123456
+215,42,Female,purchase manager,,123456
+226,27,Female,information technology,,123456
+227,32,Male,information technology,,123456
+230,29,Female,information technology,,123456
+231,58,Male,administrative officer,,123456
+232,46,Male,writer,,123456
+233,31,Male,construction,,123456
+234,32,Female,registered,,123456
+235,56,Male,business,,123456
+236,33,Male,transportation,,123456
+237,33,Male,education,,123456
+238,30,Male,security,,123456
+240,37,Female,sales manager,,123456
+242,35,Male,healthcare,,123456
+243,42,Female,manager,,123456
+244,41,Male,manager,,123456
+245,35,Male,healthcare,,123456
+246,45,Female,manager,,123456
+251,39,Male,computer technician,,123456
+252,58,Male,administrative officer,,123456
+253,40,Female,information technology,,123456
+254,25,Female,software developer,,123456
+255,25,Male,software developer,,123456
+256,49,Male,information technology,,123456
+257,25,Female,manager,,123456
+258,25,Male,executive manager,,123456
