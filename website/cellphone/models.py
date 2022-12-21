@@ -11,7 +11,6 @@ class Data(models.Model):
     cellphone_id = models.IntegerField(primary_key=True)
     brand = models.CharField(max_length=100, blank=True, null=True)
     model = models.CharField(max_length=100, blank=True, null=True)
-    operating_system = models.CharField(max_length=100, blank=True, null=True)
     internal_memory = models.FloatField(blank=True, null=True)
     ram = models.FloatField(blank=True, null=True)
     performance = models.FloatField(blank=True, null=True)
@@ -39,10 +38,11 @@ class Rate(models.Model):
 
 
 class Users(models.Model):
-    user_id = models.FloatField(primary_key=True)
+    user_id = models.CharField(max_length=100, blank=True, null=True)
     age = models.FloatField(blank=True, null=True)
     gender = models.CharField(max_length=100, blank=True, null=True)
     occupation = models.CharField(max_length=100, blank=True, null=True)
+    password = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         managed = False
