@@ -29,18 +29,17 @@ def register(request):
         occupation = request.POST['occupation']
         password = request.POST['password']
         password2 = request.POST['password2']
-
         if password == password2:
             if Users.objects.filter(id=id).exists():
-                messages.info(request, 'Username Alredy Used')
-                return redirect('register')
-            else:
                 user = Users(username = id,age = age, gender = gender, occupation = occupation, password = password)
                 user.save()
                 return redirect('login')
+            else:
+                messages.info(request, 'Username Alredy Used')
+                return redirect('register', permanent=True)
         else:
             messages.info(request, 'Password Not The Same.')
-            return redirect('register')
+            return redirect('register', permanent=True)
     else:
         return render(request, 'register.html')
 
@@ -49,8 +48,8 @@ def login(request):
         id = request.POST['id']
         password = request.POST['password']
         if Users.objects.filter(id = id, password = password).exists():
+            return redirect('/')
+        else:
             messages.info(request, 'Credentials Invalid')
             return redirect('login')
-        else:
-            return redirect('/')
     return render(request, 'login.html')
