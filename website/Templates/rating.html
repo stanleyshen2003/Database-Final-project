@@ -1,0 +1,20 @@
+<h1>Rating</h1>
+
+{% for message in messages %}
+<h3>{{message}}</h3>
+{% endfor %}
+
+<form action = '/rating/' method = 'POST'>
+    {% csrf_token %}
+    <p>cellphone id:</p>
+    <input type = 'number' name = 'cellphone'required/>
+    <p>rate:</p>
+    <select name='rate'>
+      {% with ''|center:10 as range %}
+      {% for _ in range %}
+        <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+      {% endfor %}
+      {% endwith %}
+    </select><br>
+    <input type = 'submit'/> 
+</form>
