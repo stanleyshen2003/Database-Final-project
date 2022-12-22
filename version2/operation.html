@@ -16,13 +16,7 @@
           var table = document.createElement('table');
           table.style.border = "1px solid black"; // 加入表格的樣式
           // 檢查服務器返回的數據是由哪種模型生成的
-          if (response.hasOwnProperty('data')) {
-            var data = response.data;
-          } else if (response.hasOwnProperty('users')) {
-            var data = response.users;
-          } else if (response.hasOwnProperty('rate')) {
-            var data = response.rate;
-          }
+          var data = JSON.parse(xhr.responseText).all;
           var table = document.querySelector('table');
           if (table) {
             table.parentNode.removeChild(table);
