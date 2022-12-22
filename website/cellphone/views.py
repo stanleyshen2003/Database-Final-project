@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
 from datetime import datetime
@@ -56,3 +56,23 @@ def login(request):
             messages.info(request, 'The User ID or password may be wrong.')
             return redirect('/login/')
     return render(request, 'login.html')
+
+def rating(request):
+    if request.method == 'POST':
+        id = request.session['user_id']
+        cellphone_id = request.POST['cellphone']
+        rate = request.POST['rate']
+        if Rate.objects.filter(user_id=id, cellphone_id=cellphone_id).exists():
+            messages.info(request, 'You have rated this cellphone.')
+            return redirect('/rating/')
+        else:
+            user = Users.objects.get(user_id=id)
+            if Data.objects.filter(cellphone_id=cellphone_id).exists():
+                cellphone = Data.objects.get(cellphone_id=cellphone_id)
+            else:
+                messages.info(request, 'Doesnt  exist this cellphone.')
+                return redirect('/rating/')
+            newrate = Rate(user = user,cellphone=cellphone,rating = rate)
+            newrate.save()
+            return redirect('/operation/')
+    return render(request, 'rating.html')

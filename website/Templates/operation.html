@@ -1,12 +1,75 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Main</title>
+  <script>
+    function getData(url) {
+      // 創建 XHR 對象
+      var xhr = new XMLHttpRequest();
+      // 設置回調函數
+      xhr.onload = function () {
+        if (xhr.status == 200) {
+          // 從服務器接收到的是 JSON 格式的數據
+          var response = JSON.parse(xhr.responseText);
+          // 生成表格
+          var table = document.createElement('table');
+          table.style.border = "1px solid black"; // 加入表格的樣式
+          // 檢查服務器返回的數據是由哪種模型生成的
+          var data = JSON.parse(xhr.responseText).all;
+          var table = document.querySelector('table');
+          if (table) {
+            table.parentNode.removeChild(table);
+          }
+          // 生成表格
+          var table = document.createElement('table');
+          table.style.border = "1px solid black"; // 加入表格的樣式
+
+          // 生成表頭行
+          var thead = document.createElement('thead');
+          var th = '';
+          for (var attr in data[0]) {
+            th += '<th>' + attr + '</th>';
+          }
+          thead.innerHTML = th;
+          table.appendChild(thead);
+
+          // 生成表格主体
+          for (var i = 0; i < data.length; i++) {
+            var tr = document.createElement('tr');
+            var td = '';
+            for (var attr in data[i]) {
+              td += '<td>' + data[i][attr] + '</td>';
+            }
+            tr.innerHTML = td;
+            tr.innerHTML = td;
+            table.appendChild(tr);
+          }
+          // 在頁面中插入表格
+          document.body.appendChild(table);
+        }
+      };
+      // 發送請求
+      xhr.open('GET', url);
+      xhr.send();
+    }
+  </script>
+  <style type="text/css">
+    table thead th {
+      background-color: #ccc;
+    }
+    table td,
+    table th {
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
+
 <body>
   <h1>Access data table</h1>
-  <button><a href="rate/">Rate</a></button>
-  <button><a href="data/">Data</a></button>
-  <button><a href="users/">Users</a></button>
+  <button onclick="getData('/rate/')">Rate</button>
+  <button onclick="getData('/data/')">Data</button>
+  <button onclick="getData('/users/')">Users</button>
 </body>
+
 </html>
