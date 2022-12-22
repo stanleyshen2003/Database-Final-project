@@ -1,7 +1,0 @@
-這種寫法的話template中的table類html 像是data.html都可以刪掉了
-
-
-大概呼叫流程是這樣的
-您所描述的呼叫流程是正確的。當您在頁面中按下「data」按鈕後，將會觸發 getData('/data/') 函數。此函數將發送 HTTP GET 請求到 '/data/' 的 URL，Django 將會使用 URLconf 中的規則尋找對應的視圖函數，在這種情況下是 get_data 函數。get_data 函數則會查詢 Data 模型的所有對象，並將它們以 JSON 的形式返回給客戶端。之後，客戶端應用程式就可以處理該數據，並使用它生成表格。
-
-至於 data.html 頁面，由於您使用的是客戶端應用程式（即 JavaScript）來生成表格，因此是不需要 data.html 頁面的。當您使用 JavaScript 的 AJAX 請求來獲取數據時，數據是直接傳回客戶端的，並不會有新的網頁被加載。

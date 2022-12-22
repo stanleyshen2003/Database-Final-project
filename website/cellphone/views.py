@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.contrib import messages
 from datetime import datetime
 from .models import Users
@@ -14,15 +15,15 @@ def operation(request):
 
 def get_users(request):
     users = Users.objects.all()
-    return render(request, 'users.html', {'users':users})
+    return JsonResponse({'all': list(users.values())})
 
 def get_data(request):
     data = Data.objects.all()
-    return render(request, 'data.html', {'data':data})
+    return JsonResponse({'all': list(data.values())})
 
 def get_rate(request):
     rate = Rate.objects.all()
-    return render(request, 'rate.html', {'rate':rate})
+    return JsonResponse({'all': list(rate.values())})
 
 def register(request):
     if request.method == 'POST':
@@ -35,7 +36,7 @@ def register(request):
         if password == password2:
             if Users.objects.filter(user_id=id).exists():
                 messages.info(request, 'Username Alredy Used')
-                return redirect('/register/')
+                return redirect('/operation/')
             else:
                 user = Users(user_id = id,age = age, gender = gender, occupation = occupation, password = password)
                 user.save()
@@ -51,12 +52,13 @@ def login(request):
         id = request.POST['id']
         password = request.POST['password']
         if Users.objects.filter(user_id = id, password = password).exists():
+            request.session['user_id'] = id
             return redirect('/operation/')
         else:
             messages.info(request, 'The User ID or password may be wrong.')
             return redirect('/login/')
     return render(request, 'login.html')
-
+    
 def rating(request):
     if request.method == 'POST':
         id = request.session['user_id']
