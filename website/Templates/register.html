@@ -10,6 +10,13 @@
     <input type = "text" name = "id" />
     <p>Age:</p>
     <input type = "number" name = "Age" />
+    <select name="age">
+      {% with ''|center:100 as range %}
+      {% for _ in range %}
+        <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+      {% endfor %}
+      {% endwith %}
+    </select>
     <p>Gender:</p>
     <input type="radio" name="gender" value="Male" /> Male
     <input type="radio" name="gender" value="Female" /> Female
