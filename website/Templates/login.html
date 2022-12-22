@@ -7,8 +7,8 @@
 <form action = 'login' method = 'POST'>
     {% csrf_token %}
     <p>User_id:</p>
-    <input type = 'text' name = 'id'/>
+    <input type = 'text' name = 'id'required/>
     <p>Password:</p>
-    <input type = 'password' name = 'password'/><br>
+    <input type = 'password' name = 'password'required/><br>
     <input type = 'submit'/> 
 </form>
