@@ -26,6 +26,10 @@ class Data(models.Model):
         managed = False
         db_table = 'data'
 
+    class Meta:
+        managed = False
+        db_table = 'data'
+
 class Rate(models.Model):
     user = models.OneToOneField('Users', models.DO_NOTHING, primary_key=True)
     cellphone = models.ForeignKey(Data, models.DO_NOTHING)
@@ -38,7 +42,7 @@ class Rate(models.Model):
 
 
 class Users(models.Model):
-    user_id = models.CharField(max_length=100, blank=True, null=True)
+    user_id = models.CharField(primary_key=True, max_length=100)
     age = models.FloatField(blank=True, null=True)
     gender = models.CharField(max_length=100, blank=True, null=True)
     occupation = models.CharField(max_length=100, blank=True, null=True)
