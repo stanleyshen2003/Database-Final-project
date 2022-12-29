@@ -99,9 +99,150 @@ def cellphone_avg_rate(request):
             where newt.cellphone_id=data.cellphone_id)
             order by average desc;
     """)
-    
+    data = cur.fetchall()
+    processedData = []
+    column_names = [desc[0] for desc in cur.description]
+    for i in range(len(data)):
+        row = {}
+        for j in range(len(column_names)):
+            row[column_names[j]] = data[i][j]
+        processedData.append(row)
+
     if conn is not None:
-        re = JsonResponse({'all': list(cur.fetchall())})
+        re = JsonResponse({'all': processedData})
         conn.close()
     return re
+def market_share(request):
+    conn = None
     
+    conn = psycopg2.connect(
+        host="database-2.cahrpukjz3tx.us-east-1.rds.amazonaws.com",
+        database="postgres",
+        user="postgres",
+        password="umamusume")
+    cur = conn.cursor()
+    cur.execute("""
+            with brand_amount(brand,amount) as
+(select data.brand, count(*) as amount 
+from data
+join rate on data.cellphone_id=rate.cellphone_id
+group by data.brand
+order by amount desc)
+
+select brand_amount.brand,
+concat(round(cast(brand_amount.amount as decimal)/9.9,2),'%') as market_share
+from brand_amount
+order by brand_amount.amount desc
+
+    """)
+    data = cur.fetchall()
+    processedData = []
+    column_names = [desc[0] for desc in cur.description]
+    for i in range(len(data)):
+        row = {}
+        for j in range(len(column_names)):
+            row[column_names[j]] = data[i][j]
+        processedData.append(row)
+
+    if conn is not None:
+        re = JsonResponse({'all': processedData})
+        conn.close()
+    return re
+def avg_sex_M(request):
+    conn = None
+    
+    conn = psycopg2.connect(
+        host="database-2.cahrpukjz3tx.us-east-1.rds.amazonaws.com",
+        database="postgres",
+        user="postgres",
+        password="umamusume")
+    cur = conn.cursor()
+    cur.execute("""
+            select data.model,tablelast.average_rating,tablelast.number_of_ratings
+from(select cellphone_id,round(cast(avg(rating) as decimal),3) as average_rating,count(user_id) as number_of_ratings
+from (select * from(select * from rate NATURAL join users) as bigT where gender='Male')as newbigT
+group by cellphone_id)as tablelast,data
+where tablelast.cellphone_id=data.cellphone_id
+order by tablelast.average_rating desc;
+
+
+    """)
+    data = cur.fetchall()
+    processedData = []
+    column_names = [desc[0] for desc in cur.description]
+    for i in range(len(data)):
+        row = {}
+        for j in range(len(column_names)):
+            row[column_names[j]] = data[i][j]
+        processedData.append(row)
+
+    if conn is not None:
+        re = JsonResponse({'all': processedData})
+        conn.close()
+    return re
+def avg_sex_F(request):
+    conn = None
+    
+    conn = psycopg2.connect(
+        host="database-2.cahrpukjz3tx.us-east-1.rds.amazonaws.com",
+        database="postgres",
+        user="postgres",
+        password="umamusume")
+    cur = conn.cursor()
+    cur.execute("""
+            select data.model,tablelast.average_rating,tablelast.number_of_ratings
+from(select cellphone_id,round(cast(avg(rating) as decimal),3) as average_rating,count(user_id) as number_of_ratings
+from (select * from(select * from rate NATURAL join users) as bigT where gender='Female')as newbigT
+group by cellphone_id)as tablelast,data
+where tablelast.cellphone_id=data.cellphone_id
+order by tablelast.average_rating desc;
+
+
+    """)
+    data = cur.fetchall()
+    processedData = []
+    column_names = [desc[0] for desc in cur.description]
+    for i in range(len(data)):
+        row = {}
+        for j in range(len(column_names)):
+            row[column_names[j]] = data[i][j]
+        processedData.append(row)
+
+    if conn is not None:
+        re = JsonResponse({'all': processedData})
+        conn.close()
+    return re
+def top_elder(request):
+    conn = None
+    
+    conn = psycopg2.connect(
+        host="database-2.cahrpukjz3tx.us-east-1.rds.amazonaws.com",
+        database="postgres",
+        user="postgres",
+        password="umamusume")
+    cur = conn.cursor()
+    cur.execute("""
+            select data.model,newt.averageRate
+from(select cellphone_id,round(cast(avg(rating) as decimal),3) as averageRate
+from(select * from rate natural join (select user_id from
+(select avg(age) as avg_age from users) as avgT,users
+where users.age>avgT.avg_age) as newt) as bigT
+group by cellphone_id
+limit 10) as newt,data
+where newt.cellphone_id=data.cellphone_id
+order by newt.averageRate desc;
+
+    """)
+    data = cur.fetchall()
+    processedData = []
+    column_names = [desc[0] for desc in cur.description]
+    for i in range(len(data)):
+        row = {}
+        for j in range(len(column_names)):
+            row[column_names[j]] = data[i][j]
+        processedData.append(row)
+
+    if conn is not None:
+        re = JsonResponse({'all': processedData})
+        conn.close()
+    return re

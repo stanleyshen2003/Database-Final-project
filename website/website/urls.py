@@ -28,4 +28,8 @@ urlpatterns = [
     path('register/', views.register),
     path('rating/', views.rating),
     path('cellphone_avg_rate/', views.cellphone_avg_rate),
+    path('market_share/', views.market_share),
+    path('avg_sex_M/', views.avg_sex_M),
+    path('avg_sex_F/', views.avg_sex_F),
+    path('top_elder/', views.top_elder),
 ]
