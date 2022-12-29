@@ -6,6 +6,7 @@ from datetime import datetime
 from .models import Users
 from .models import Data
 from .models import Rate
+import psycopg2
 
 def home(request):
     return render(request, 'main.html')
@@ -78,3 +79,29 @@ def rating(request):
             newrate.save()
             return redirect('/operation/')
     return render(request, 'rating.html')
+
+def cellphone_avg_rate(request):
+    conn = None
+    
+    conn = psycopg2.connect(
+        host="database-2.cahrpukjz3tx.us-east-1.rds.amazonaws.com",
+        database="postgres",
+        user="postgres",
+        password="umamusume")
+    cur = conn.cursor()
+    cur.execute("""
+            (select 'average' as model,round(cast(avg(rating) as decimal),3) as average from rate,data)
+            union
+            (select model,newt.average
+            from(select cellphone_id,round(cast(avg(rating) as decimal),3) as average
+            from rate
+            group by cellphone_id) as newt,data
+            where newt.cellphone_id=data.cellphone_id)
+            order by average desc;
+    """)
+    
+    if conn is not None:
+        re = JsonResponse({'all': list(cur.fetchall())})
+        conn.close()
+    return re
+    
