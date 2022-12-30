@@ -90,18 +90,20 @@ def cellphone_avg_rate(request):
         password="umamusume")
     cur = conn.cursor()
     cur.execute("""
-            (select 'average' as model,round(cast(avg(rating) as decimal),3) as average from rate,data)
-            union
-            (select model,newt.average
-            from(select cellphone_id,round(cast(avg(rating) as decimal),3) as average
-            from rate
-            group by cellphone_id) as newt,data
-            where newt.cellphone_id=data.cellphone_id)
-            order by average desc;
+        (select 'average' as model,round(cast(avg(rating) as decimal),3) as average from rate,data)
+        union
+        (select model,newt.average
+        from(select cellphone_id,round(cast(avg(rating) as decimal),3) as average
+        from rate
+        group by cellphone_id) as newt,data
+        where newt.cellphone_id=data.cellphone_id)
+        order by average desc;
     """)
     
     if conn is not None:
         re = JsonResponse({'all': list(cur.fetchall())})
         conn.close()
     return re
-    
+
+def favorite_cell_phone_of_users(request):
+    pass
