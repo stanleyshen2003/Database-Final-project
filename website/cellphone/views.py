@@ -71,13 +71,24 @@ def rating(request):
         else:
             user = Users.objects.get(user_id=id)
             if Data.objects.filter(cellphone_id=cellphone_id).exists():
-                cellphone = Data.objects.get(cellphone_id=cellphone_id)
+                conn = psycopg2.connect(
+                     host="database-2.cahrpukjz3tx.us-east-1.rds.amazonaws.com",
+                    database="postgres",
+                    user="postgres",
+                    password="umamusume")
+                cur = conn.cursor()
+                SQL="INSERT INTO rate VALUES(%s, %s, %s)" 
+                val=(id, cellphone_id, rate)
+                cur.execute(SQL , val)
+                conn.commit()
+                messages.info(request, 'Done.')
+                cur.close()
+                conn.close()
+                return redirect('/rating/')
             else:
                 messages.info(request, 'Doesnt  exist this cellphone.')
                 return redirect('/rating/')
-            newrate = Rate(user = user,cellphone=cellphone,rating = rate)
-            newrate.save()
-            return redirect('/operation/')
+            
     return render(request, 'rating.html')
 
 def cellphone_avg_rate(request):
