@@ -36,8 +36,8 @@ def register(request):
         password2 = request.POST['password2']
         if password == password2:
             if Users.objects.filter(user_id=id).exists():
-                messages.info(request, 'Username Alredy Used')
-                return redirect('/operation/')
+                messages.info(request, 'UserID Alredy Used')
+                return redirect('/register/')
             else:
                 user = Users(user_id = id,age = age, gender = gender, occupation = occupation, password = password)
                 user.save()
