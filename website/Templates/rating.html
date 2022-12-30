@@ -6,9 +6,32 @@
 
 <form action = '/rating/' method = 'POST'>
     {% csrf_token %}
-    <p>cellphone id:</p>
-    <input type = 'number' name = 'cellphone'required/>
-    <p>rate:</p>
+    <p>Enter the information of cellphone you want to rate:</p>
+    <p>Brand: (Ex: Apple, Samsung...)</p>
+    <input type = 'text' name = 'brand'required/>
+    <p>Model: (Ex: iPhone 13...)</p>
+    <input type = 'text' name = 'model'required/>
+    <p>Internal Memory: (Ex: 128 (GB) )</p>
+    <input type = 'number' name = 'internal_memory'required/>
+    <p>	RAM: (Ex: 4 (GB) )</p>
+    <input type = 'number' name = 'ram'required/>
+    <p>	Performance: </p>
+    <input type = 'number' step="0.01" name = 'performance'required/>
+    <p>	Main Camera: </p>
+    <input type = 'number' name = 'main_camera'required/>
+    <p>	Selfie Camera: </p>
+    <input type = 'number' name = 'selfie_camera'required/>
+    <p>	Battery Size: </p>
+    <input type = 'number' name = 'battery_size'required/>
+    <p>	Screen Size: </p>
+    <input type = 'number' name = 'screen_size'required/>
+    <p>	Weight: </p>
+    <input type = 'number' name = 'weight'required/>
+    <p>	Price: (US Dollar) </p>
+    <input type = 'number' name = 'price'required/>
+    <p>	Release Date: (yyyy-mm-dd)</p>
+    <input type = 'text' name = 'release_date'required/>
+    <p>Rate:</p>
     <select name='rate'>
       {% with ''|center:10 as range %}
       {% for _ in range %}

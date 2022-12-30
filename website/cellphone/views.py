@@ -63,8 +63,48 @@ def login(request):
 def rating(request):
     if request.method == 'POST':
         id = request.session['user_id']
-        cellphone_id = request.POST['cellphone']
+        brand = request.POST['brand']
+        model = request.POST['model']
+        internal_memory = request.POST['internal_memory']
+        ram = request.POST['ram']
+        performance = request.POST['performance']
+        main_camera = request.POST['main_camera']
+        selfie_camera = request.POST['selfie_camera']
+        battery_size = request.POST['battery_size']
+        screen_size = request.POST['screen_size']
+        weight = request.POST['weight']
+        price = request.POST['price']
+        release_date = request.POST['release_date']
         rate = request.POST['rate']
+        cellphone_id = -1
+        
+        conn = psycopg2.connect(
+            host="database-2.cahrpukjz3tx.us-east-1.rds.amazonaws.com",
+            database="postgres",
+            user="postgres",
+            password="umamusume")
+        cur = conn.cursor()
+        SQL1="INSERT INTO rate VALUES(%s, %s, %s)" 
+        SQL2="INSERT INTO data VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+
+        cur.execute("SELECT max(cellphone_id) from data")
+        cellphone_id = int(cur.fetchall()[0][0]) + 1
+        #messages.info(request, str(cellphone_id))
+        val1=(id, cellphone_id, rate)
+        val2=(cellphone_id, brand, model, internal_memory, ram, performance, main_camera, 
+        selfie_camera, battery_size, screen_size, weight, price, release_date)
+        cur.execute(SQL2 , val2)
+        cur.execute(SQL1 , val1)
+        
+        conn.commit()
+        messages.info(request, 'Done.')
+        cur.close()
+        conn.close()
+        
+        '''
+        if Data.objects.filter(brand=brand, model=model, internal_memory=internal_memory, ram=ram, performance=performance, main_camera=main_camera, selfie_camera=selfie_camera, battery_size=battery_size, screen_size=screen_size, weight=weight, price=price, release_date=release_date).exists():
+            cellphone_id = Data.objects.filter
+
         if Rate.objects.filter(user_id=id, cellphone_id=cellphone_id).exists():
             messages.info(request, 'You have rated this cellphone.')
             return redirect('/rating/')
@@ -88,7 +128,7 @@ def rating(request):
             else:
                 messages.info(request, 'Doesnt  exist this cellphone.')
                 return redirect('/rating/')
-            
+        '''    
     return render(request, 'rating.html')
 
 def cellphone_avg_rate(request):
