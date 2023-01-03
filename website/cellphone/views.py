@@ -56,9 +56,9 @@ def login(request):
             request.session['user_id'] = id
             return redirect('/operation/')
         else:
-            messages.info(request, 'The User ID or password may be wrong.')
-            return redirect('/login/')
-    return render(request, 'login.html')
+            messages.info(request, 'The ID or password may be wrong.')
+            return redirect('/')
+    return render(request, 'main.html')
     
 def rating(request):
     if request.method == 'POST':
