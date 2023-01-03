@@ -14,17 +14,9 @@ def home(request):
 def operation(request):
     return render(request, 'operation.html')
 
-def get_users(request):
-    users = Users.objects.all()
-    return JsonResponse({'all': list(users.values())})
-
 def get_data(request):
     data = Data.objects.all()
     return JsonResponse({'all': list(data.values())})
-
-def get_rate(request):
-    rate = Rate.objects.all()
-    return JsonResponse({'all': list(rate.values())})
 
 def register(request):
     if request.method == 'POST':
