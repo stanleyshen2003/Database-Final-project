@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="{% static 'css/design-input.css'%}">
 </head>
 <body>
-    <div class="hero1">
-        <div class="login-icon2">
+    <div class="hero1" style="position: relative;">
+        <div class="login-icon2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
             <img src="{% static 'img/phone.png'%}">
         </div>
-        <div class="form-box1">
+        <div class="form-box1" style="position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%);">
             <p class="loginwords">Log in</p>
             <form id="register" class="input-group" action ='/login/' method = 'POST'>
                 {% csrf_token %}
