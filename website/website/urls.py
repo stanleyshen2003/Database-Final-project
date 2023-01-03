@@ -27,6 +27,7 @@ urlpatterns = [
     path('login/', views.login),
     path('register/', views.register),
     path('rating/', views.rating),
+    path('rating2/', views.rating2),
     path('cellphone_avg_rate/', views.cellphone_avg_rate),
     path('favorite_cell_phone_of_users/', views.favorite_cell_phone_of_users),
     path('amount_of_cellphone_ratings/', views.amount_of_cellphone_ratings),

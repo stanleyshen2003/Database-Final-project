@@ -59,7 +59,28 @@ def login(request):
             messages.info(request, 'The ID or password may be wrong.')
             return redirect('/')
     return render(request, 'main.html')
-    
+
+def rating2(request):
+    if request.method == 'POST':
+        id = request.session['user_id']
+        rate = request.POST['rate']
+        cellphone_id = request.POST['cellphone_id']
+        conn = psycopg2.connect(
+            host="database-2.cahrpukjz3tx.us-east-1.rds.amazonaws.com",
+            database="postgres",
+            user="postgres",
+            password="umamusume")
+        SQL1="INSERT INTO rate VALUES(%s, %s, %s)"
+        cur = conn.cursor()
+        val1=(id, cellphone_id, rate)
+        cur.execute(SQL1 , val1)
+        conn.commit()
+        messages.info(request, 'Done.')
+        cur.close()
+        conn.close()
+        print(SQL1+" "+id+" "+rate+" "+cellphone_id)
+    return render(request, 'rating.html')  
+
 def rating(request):
     if request.method == 'POST':
         id = request.session['user_id']
@@ -75,7 +96,7 @@ def rating(request):
         weight = request.POST['weight']
         price = request.POST['price']
         release_date = request.POST['release_date']
-        rate = request.POST['rate']
+        #rate = request.POST['rate']
         cellphone_id = -1
         
         conn = psycopg2.connect(
@@ -84,17 +105,17 @@ def rating(request):
             user="postgres",
             password="umamusume")
         cur = conn.cursor()
-        SQL1="INSERT INTO rate VALUES(%s, %s, %s)" 
+        #SQL1="INSERT INTO rate VALUES(%s, %s, %s)" 
         SQL2="INSERT INTO data VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
         cur.execute("SELECT max(cellphone_id) from data")
         cellphone_id = int(cur.fetchall()[0][0]) + 1
         #messages.info(request, str(cellphone_id))
-        val1=(id, cellphone_id, rate)
+        #val1=(id, cellphone_id, rate)
         val2=(cellphone_id, brand, model, internal_memory, ram, performance, main_camera, 
         selfie_camera, battery_size, screen_size, weight, price, release_date)
         cur.execute(SQL2 , val2)
-        cur.execute(SQL1 , val1)
+        #cur.execute(SQL1 , val1)
         
         conn.commit()
         messages.info(request, 'Done.')
