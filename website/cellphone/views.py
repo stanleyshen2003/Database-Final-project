@@ -110,7 +110,7 @@ def rating(request):
         #cur.execute(SQL1 , val1)
         
         conn.commit()
-        messages.info(request, 'Done.')
+        messages.info(request, 'Done. New cellphone id = '+ str(cellphone_id))
         cur.close()
         conn.close()
         
