@@ -1,5 +1,6 @@
 # Cellphone Rating System
-[Demo](https://www.youtube.com/watch?v=jfr9eekEX3Y)
+NYCU Database Final Project - Cellphone Raitng System
+[Demo Video](https://www.youtube.com/watch?v=jfr9eekEX3Y)
 
 ### Introduction
   When we are choosing a cell phone, you have to compare their functions
