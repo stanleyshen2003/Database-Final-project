@@ -1,5 +1,5 @@
 # Cellphone Rating System
-NYCU Database Final Project - Cellphone Raitng System
+NYCU Database Final Project - Cellphone Raitng System <br>
 [Demo Video](https://www.youtube.com/watch?v=jfr9eekEX3Y)
 
 ### Introduction
