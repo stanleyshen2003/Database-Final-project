@@ -1,5 +1,5 @@
 # Cellphone Rating System
-(Demo)[https://www.youtube.com/watch?v=jfr9eekEX3Y]
+[Demo](https://www.youtube.com/watch?v=jfr9eekEX3Y)
 
 ### Introduction
   When we are choosing a cell phone, you have to compare their functions
@@ -17,8 +17,19 @@ After installing the source code, Django and other package in our environment,
 we can enter “python manage.py runserver” in the terminal.
 
 ### website View
-
+- Login Page
+![](https://imgur.com/09mUz74.png)
+- Register Page
+![](https://imgur.com/GJ68dm5.png)
+- Main Page. You can use all function by click the orange words or 'Data' at the top.
+![](https://imgur.com/4k8gNTj.png)
+![](https://imgur.com/4PcXWsN.png)
+- Rating Rage. Enter the information of your cellphone and rate it.
+![](https://imgur.com/myLqlqs.png)
+More detail usages are included in [demo video](https://www.youtube.com/watch?v=jfr9eekEX3Y)
 
 ### Task
 1. pull the data from [Cellphones Recommendations](https://www.kaggle.com/datasets/meirnizri/cellphones-recommendations?select=cellphones+users.csv)
 2. Modify user data. Change all occupation to lower case, manage some weird case, and change the date format.
+3. Use Django as backend architecture.
+4. Use CSS, Javascript and HTML to format the frontend.
