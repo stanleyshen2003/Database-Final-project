@@ -19,14 +19,24 @@ we can enter “python manage.py runserver” in the terminal.
 
 ### website View
 - Login Page
+<br> </br>
 ![](https://imgur.com/09mUz74.png)
+<br> </br>
+
 - Register Page
+<br> </br>
 ![](https://imgur.com/GJ68dm5.png)
+<br> </br>
 - Main Page. You can use all function by click the orange words or 'Data' at the top.
+<br> </br>
 ![](https://imgur.com/4k8gNTj.png)
+<br> </br>
 ![](https://imgur.com/4PcXWsN.png)
+<br> </br>
 - Rating Rage. Enter the information of your cellphone and rate it.
+<br> </br>
 ![](https://imgur.com/myLqlqs.png)
+<br> </br>
 More detail usages are included in [demo video](https://www.youtube.com/watch?v=jfr9eekEX3Y)
 
 ### Task
